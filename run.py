@@ -18,7 +18,7 @@ def fizzbuzz_encoder(i):
         return 0
 
 def fizzbuzz_decoder(prediction):
-    return [str(i), 'fizz', 'buzz', 'fizzbuzz'][prediction]
+    return [str(prediction), 'fizz', 'buzz', 'fizzbuzz'][prediction]
 
 def helper(i):
     print("%s" % fizzbuzz_decoder(fizzbuzz_encoder(i)))
@@ -59,3 +59,12 @@ for epoch in range(10000):
     if not epoch % 100:
         loss = loss_fn(model(trX[start:end]), trY[start:end])
         print("epoch:", epoch, "loss:", loss.item())
+
+#test
+testX = torch.tensor([binary_encoder(i) for i in range(1, 100)], dtype=torch.float32, device=device)
+with torch.no_grad():
+    predX = model(testX)
+
+predictions = list(predX.max(1)[1].data.tolist())
+
+print([fizzbuzz_decoder(prediction) for prediction in predictions])
