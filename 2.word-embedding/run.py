@@ -41,14 +41,14 @@ class EmbeddingModel(nn.Module):
         neg_embeddings = self.embed_out(neg_labels)     #[batch_size, 6*100, embed_size]
 
         log_pos = torch.bmm(pos_embeddings, input_embeddings.unsqueeze(2)).squeeze(2)   #[batch_size, 6]
-        log_neg = torch.bmm(neg_embeddings, input_embeddings.unsqueeze(2)).squeeze(2)   #[batch_size, 6*100]
+        log_neg = torch.bmm(neg_embeddings, -input_embeddings.unsqueeze(2)).squeeze(2)   #[batch_size, 6*100]
         
         #log_pos = nn.LogSigmoid(log_pos).sum(1)
         #log_neg = nn.LogSigmoid(log_neg).sum(1)
         log_pos = F.logsigmoid(log_pos).sum(1)
         log_neg = F.logsigmoid(log_neg).sum(1)
 
-        loss = log_pos - log_neg
+        loss = log_pos + log_neg
 
         return -loss
 
@@ -96,5 +96,5 @@ for epoch in range(2):
         optimizer.step()
 
         if i % 100 == 0:
-            print(loss.item())
+            print("epoch: {}, iteration: {}, loss: {}".format(epoch, i, loss.item()))
 
