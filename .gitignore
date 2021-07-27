@@ -1,3 +1,4 @@
 test.py
 chnsenticorp/
-2.word-embedding/data/
+data/
+3.language-modeling/lm-best.th
