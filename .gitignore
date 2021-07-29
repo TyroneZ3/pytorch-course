@@ -1,7 +1,9 @@
 test.py
+.vscode/
 chnsenticorp/
 data/
 3.language-modeling/lm-best.th
 3.language-modeling/__pycache__/
 4.text-classification/.ipynb_checkpoints/
 4.text-classification/.data/
+4.text-classification/bestmodel1.pt
