@@ -11,3 +11,4 @@ data/
 4.text-classification/best_model
 4.text-classification/best_model2
 5.image-classification/.data
+5.image-classification/mlp-model
