@@ -10,3 +10,4 @@ data/
 4.text-classification/bestmodel2.pt
 4.text-classification/best_model
 4.text-classification/best_model2
+5.image-classification/.data
