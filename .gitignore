@@ -12,3 +12,5 @@ data/
 4.text-classification/best_model2
 5.image-classification/.data
 5.image-classification/mlp-model
+5.image-classification/.ipynb_checkpoints
+5.image-classification/LeNet-model
